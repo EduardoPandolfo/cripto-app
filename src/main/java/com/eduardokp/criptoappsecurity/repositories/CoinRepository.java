@@ -21,7 +21,7 @@ public class CoinRepository {
     private static final String SELECT_ALL = "select name, sum(quantity) as quantity from coin group by name order by name;";
     private static final String SELECT_BY_NAME = "select * from coin where name = ?;";
     private static final String DELETE = "delete from coin where id = ?;";
-    private static final String UPDATE = "update coin set name = ?, price = ?, quantity = ? where id = ?;";
+    private static final String UPDATE = "update coin set name = ?, price = ?, quantity = ?, datetime = ? where id = ?;";
 
     private final JdbcTemplate template;
 
@@ -77,6 +77,7 @@ public class CoinRepository {
                 coin.getName(),
                 coin.getPrice(),
                 coin.getQuantity(),
+                coin.getDateTime(),
                 id
         };
         return template.update(UPDATE, attributes);
