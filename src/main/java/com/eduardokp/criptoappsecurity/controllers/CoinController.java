@@ -73,4 +73,13 @@ public class CoinController {
             return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteById(@PathVariable Long id) {
+        try{
+            return new ResponseEntity(repository.deleteById(id), HttpStatus.OK);
+        }catch (Exception e) {
+            return new ResponseEntity(e.getMessage(), HttpStatus.NO_CONTENT);
+        }
+    }
 }

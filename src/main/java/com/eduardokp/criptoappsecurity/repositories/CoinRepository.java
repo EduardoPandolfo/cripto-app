@@ -20,6 +20,7 @@ public class CoinRepository {
     private static final String INSERT = "insert into coin(name, datetime, price, quantity) values (?,?,?,?);";
     private static final String SELECT_ALL = "select name, sum(quantity) as quantity from coin group by name order by name;";
     private static final String SELECT_BY_NAME = "select * from coin where name = ?;";
+    private static final String DELETE = "delete from coin where id = ?;";
 
     private final JdbcTemplate template;
 
@@ -64,5 +65,9 @@ public class CoinRepository {
                     }
                 },
                 attributes);
+    }
+
+    public int deleteById(Long id) {
+        return template.update(DELETE, id);
     }
 }
