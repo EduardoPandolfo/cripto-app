@@ -1,6 +1,6 @@
 package com.eduardokp.criptoappsecurity.controllers;
 
-import com.eduardokp.criptoappsecurity.dtos.CoinDTO;
+import com.eduardokp.criptoappsecurity.dtos.CoinTransactionDTO;
 import com.eduardokp.criptoappsecurity.entities.Coin;
 import com.eduardokp.criptoappsecurity.repositories.CoinRepository;
 import org.slf4j.Logger;
@@ -50,36 +50,45 @@ public class CoinController {
 
 
     @PostMapping
-    public ResponseEntity post(@RequestBody Coin coin) {
+    public ResponseEntity<?> post(@RequestBody Coin coin) {
         try {
             Coin created = repository.insert(coin);
-            return new ResponseEntity(created, HttpStatus.CREATED);
+            return new ResponseEntity<>(created, HttpStatus.CREATED);
         } catch (Exception e) {
             logger.error(e.getMessage());
-            return new ResponseEntity("Error when creating coin, please contact support!", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Error when creating coin, please contact support!", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<CoinDTO>> getAll() {
+    public ResponseEntity<List<CoinTransactionDTO>> getAll() {
         return new ResponseEntity<>(repository.getAll(), HttpStatus.OK);
     }
 
     @GetMapping("/{nome}")
-    public ResponseEntity getByName(@PathVariable String nome) {
+    public ResponseEntity<?> getByName(@PathVariable String nome) {
         try {
-            return new ResponseEntity(repository.getByName(nome), HttpStatus.OK);
+            return new ResponseEntity<>(repository.getByName(nome), HttpStatus.OK);
         } catch (Exception e) {
-            return new ResponseEntity(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deleteById(@PathVariable Long id) {
+    public ResponseEntity<?> deleteById(@PathVariable Long id) {
         try{
-            return new ResponseEntity(repository.deleteById(id), HttpStatus.OK);
+            return new ResponseEntity<>(repository.deleteById(id), HttpStatus.OK);
         }catch (Exception e) {
-            return new ResponseEntity(e.getMessage(), HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NO_CONTENT);
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Coin coin) {
+        try{
+            return new ResponseEntity<>(repository.update(id, coin), HttpStatus.OK);
+        }catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NO_CONTENT);
         }
     }
 }

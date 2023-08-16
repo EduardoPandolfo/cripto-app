@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @Setter
 @Getter
 @NoArgsConstructor
-public class CoinDTO {
+public class CoinTransactionDTO {
     private String name;
     private BigDecimal quantity;
 }

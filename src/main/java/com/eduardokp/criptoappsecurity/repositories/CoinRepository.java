@@ -1,6 +1,6 @@
 package com.eduardokp.criptoappsecurity.repositories;
 
-import com.eduardokp.criptoappsecurity.dtos.CoinDTO;
+import com.eduardokp.criptoappsecurity.dtos.CoinTransactionDTO;
 import com.eduardokp.criptoappsecurity.entities.Coin;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -21,6 +21,7 @@ public class CoinRepository {
     private static final String SELECT_ALL = "select name, sum(quantity) as quantity from coin group by name order by name;";
     private static final String SELECT_BY_NAME = "select * from coin where name = ?;";
     private static final String DELETE = "delete from coin where id = ?;";
+    private static final String UPDATE = "update coin set name = ?, price = ?, quantity = ? where id = ?;";
 
     private final JdbcTemplate template;
 
@@ -37,11 +38,11 @@ public class CoinRepository {
         return coin;
     }
 
-    public List<CoinDTO> getAll() {
-        return template.query(SELECT_ALL, new RowMapper<CoinDTO>() {
+    public List<CoinTransactionDTO> getAll() {
+        return template.query(SELECT_ALL, new RowMapper<CoinTransactionDTO>() {
             @Override
-            public CoinDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
-                CoinDTO dto = new CoinDTO();
+            public CoinTransactionDTO mapRow(ResultSet rs, int rowNum) throws SQLException {
+                CoinTransactionDTO dto = new CoinTransactionDTO();
                 dto.setName(rs.getString(1));
                 dto.setQuantity(rs.getBigDecimal(2));
                 return dto;
@@ -69,5 +70,15 @@ public class CoinRepository {
 
     public int deleteById(Long id) {
         return template.update(DELETE, id);
+    }
+
+    public int update(Long id, Coin coin) {
+        Object[] attributes = new Object[] {
+                coin.getName(),
+                coin.getPrice(),
+                coin.getQuantity(),
+                id
+        };
+        return template.update(UPDATE, attributes);
     }
 }
