@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -25,6 +24,7 @@ public class CoinController {
 
     @Bean
     public void init() {
+        logger.info("-> INICIANDO COIN CONTROLLER");
 //        Coin c1 = new Coin();
 //
 //        c1.setName("BITCOIN");
@@ -60,6 +60,15 @@ public class CoinController {
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Coin coin) {
+        try{
+            return new ResponseEntity<>(repository.update(id, coin), HttpStatus.OK);
+        }catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NO_CONTENT);
+        }
+    }
+
     @GetMapping("/all")
     public ResponseEntity<List<CoinTransactionDTO>> getAll() {
         return new ResponseEntity<>(repository.getAll(), HttpStatus.OK);
@@ -76,19 +85,13 @@ public class CoinController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteById(@PathVariable Long id) {
+        boolean response = false;
         try{
-            return new ResponseEntity<>(repository.deleteById(id), HttpStatus.OK);
+            response = repository.deleteById(id);
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NO_CONTENT);
         }
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Coin coin) {
-        try{
-            return new ResponseEntity<>(repository.update(id, coin), HttpStatus.OK);
-        }catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NO_CONTENT);
-        }
-    }
 }
