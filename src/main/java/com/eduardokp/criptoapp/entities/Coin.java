@@ -1,4 +1,4 @@
-package com.eduardokp.criptoappsecurity.entities;
+package com.eduardokp.criptoapp.entities;
 
 
 import com.sun.istack.NotNull;

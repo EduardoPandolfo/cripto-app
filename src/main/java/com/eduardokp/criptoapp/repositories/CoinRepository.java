@@ -1,7 +1,7 @@
-package com.eduardokp.criptoappsecurity.repositories;
+package com.eduardokp.criptoapp.repositories;
 
-import com.eduardokp.criptoappsecurity.dtos.CoinTransactionDTO;
-import com.eduardokp.criptoappsecurity.entities.Coin;
+import com.eduardokp.criptoapp.dtos.CoinTransactionDTO;
+import com.eduardokp.criptoapp.entities.Coin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Repository;
@@ -42,7 +42,7 @@ public class CoinRepository {
     }
 
     public List<CoinTransactionDTO> getAll() {
-        String jpql = "select new com.eduardokp.criptoappsecurity.dtos.CoinTransactionDTO(c.name, sum(c.quantity)) from Coin c group by c.name order by c.name";
+        String jpql = "select new com.eduardokp.criptoapp.dtos.CoinTransactionDTO(c.name, sum(c.quantity)) from Coin c group by c.name order by c.name";
         TypedQuery<CoinTransactionDTO> query = em.createQuery(jpql, CoinTransactionDTO.class);
         return query.getResultList();
     }

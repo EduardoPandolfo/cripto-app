@@ -1,4 +1,4 @@
-package com.eduardokp.criptoappsecurity.dtos;
+package com.eduardokp.criptoapp.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

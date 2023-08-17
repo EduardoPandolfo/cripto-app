@@ -1,4 +1,4 @@
-package com.eduardokp.criptoappsecurity;
+package com.eduardokp.criptoapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

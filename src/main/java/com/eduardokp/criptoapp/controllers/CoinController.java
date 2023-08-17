@@ -1,8 +1,8 @@
-package com.eduardokp.criptoappsecurity.controllers;
+package com.eduardokp.criptoapp.controllers;
 
-import com.eduardokp.criptoappsecurity.dtos.CoinTransactionDTO;
-import com.eduardokp.criptoappsecurity.entities.Coin;
-import com.eduardokp.criptoappsecurity.repositories.CoinRepository;
+import com.eduardokp.criptoapp.dtos.CoinTransactionDTO;
+import com.eduardokp.criptoapp.entities.Coin;
+import com.eduardokp.criptoapp.repositories.CoinRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

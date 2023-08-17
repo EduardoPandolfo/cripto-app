@@ -1,4 +1,4 @@
-package com.eduardokp.criptoappsecurity;
+package com.eduardokp.criptoapp;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
