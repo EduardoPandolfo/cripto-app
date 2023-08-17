@@ -77,7 +77,7 @@ public class CoinRepository {
                 coin.getName(),
                 coin.getPrice(),
                 coin.getQuantity(),
-                coin.getDateTime(),
+                new Timestamp(System.currentTimeMillis()),
                 id
         };
         return template.update(UPDATE, attributes);

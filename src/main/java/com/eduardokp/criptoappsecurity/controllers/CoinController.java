@@ -25,27 +25,27 @@ public class CoinController {
 
     @Bean
     public void init() {
-        Coin c1 = new Coin();
-
-        c1.setName("BITCOIN");
-        c1.setPrice(new BigDecimal("100.00"));
-        c1.setQuantity(new BigDecimal("3.0"));
-
-        Coin c2 = new Coin();
-
-        c2.setName("BITCOIN");
-        c2.setPrice(new BigDecimal("1020.00"));
-        c2.setQuantity(new BigDecimal("32.0"));
-
-        Coin c3 = new Coin();
-
-        c3.setName("ETHEREUM");
-        c3.setPrice(new BigDecimal("100.00"));
-        c3.setQuantity(new BigDecimal("3.0"));
-
-        repository.insert(c1);
-        repository.insert(c2);
-        repository.insert(c3);
+//        Coin c1 = new Coin();
+//
+//        c1.setName("BITCOIN");
+//        c1.setPrice(new BigDecimal("100.00"));
+//        c1.setQuantity(new BigDecimal("3.0"));
+//
+//        Coin c2 = new Coin();
+//
+//        c2.setName("BITCOIN");
+//        c2.setPrice(new BigDecimal("1020.00"));
+//        c2.setQuantity(new BigDecimal("32.0"));
+//
+//        Coin c3 = new Coin();
+//
+//        c3.setName("ETHEREUM");
+//        c3.setPrice(new BigDecimal("100.00"));
+//        c3.setQuantity(new BigDecimal("3.0"));
+//
+//        repository.insert(c1);
+//        repository.insert(c2);
+//        repository.insert(c3);
     }
 
 
