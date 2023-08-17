@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.eduardokp</groupId>
-    <artifactId>cripto-app-security</artifactId>
+    <artifactId>cripto-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>cripto-app-security</name>
-    <description>Demo for Critpo App Security</description>
+    <description>Demo for Critpo App ms</description>
     <properties>
         <java.version>11</java.version>
     </properties>
