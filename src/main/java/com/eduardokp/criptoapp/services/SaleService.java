@@ -90,4 +90,9 @@ public class SaleService {
             itemSaleRepository.save(itemSale);
         }
     }
+
+    public SaleInfoDTO getById(Long id) {
+        Optional<Sale> sale = saleRepository.findById(id);
+        return sale.map(this::getSaleInfo).orElse(null);
+    }
 }
