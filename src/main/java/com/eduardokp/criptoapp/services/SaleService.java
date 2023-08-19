@@ -7,6 +7,7 @@ import com.eduardokp.criptoapp.entities.ItemSale;
 import com.eduardokp.criptoapp.entities.Product;
 import com.eduardokp.criptoapp.entities.Sale;
 import com.eduardokp.criptoapp.entities.User;
+import com.eduardokp.criptoapp.exceptions.ProductNoQuantityAvailableException;
 import com.eduardokp.criptoapp.repositories.ItemSaleRepository;
 import com.eduardokp.criptoapp.repositories.ProductRepository;
 import com.eduardokp.criptoapp.repositories.SaleRepository;
@@ -79,6 +80,14 @@ public class SaleService {
                 ItemSale itemSale = new ItemSale();
                 itemSale.setProduct(product);
                 itemSale.setQuantity(dto.getQuantity());
+
+                if(product.getQuantity() == 0 || product.getQuantity() < itemSale.getQuantity()) {
+                    throw new ProductNoQuantityAvailableException();
+                }
+
+                int total = product.getQuantity() - itemSale.getQuantity();
+                product.setQuantity(total);
+                productRepository.save(product);
 
                 return itemSale;
         }).collect(Collectors.toList());

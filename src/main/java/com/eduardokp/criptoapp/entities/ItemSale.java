@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,6 +28,7 @@ public class ItemSale {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+    @Min(value = 0)
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 }
