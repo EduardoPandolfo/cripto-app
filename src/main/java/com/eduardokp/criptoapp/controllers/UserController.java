@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -30,7 +31,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<?> post(@RequestBody User user) {
+    public ResponseEntity<?> post(@Valid @RequestBody User user) {
         try {
             user.setEnabled(true);
             return new ResponseEntity<>(service.save(user), HttpStatus.CREATED);
@@ -40,7 +41,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> put(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<?> put(@PathVariable Long id, @Valid @RequestBody User user) {
         try {
             Optional<UserDTO> optUser = service.findById(id);
             if (optUser.isPresent()) {

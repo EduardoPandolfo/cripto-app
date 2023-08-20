@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
 @AllArgsConstructor
@@ -22,9 +23,11 @@ public class Product {
     private Long id;
 
     @Column(name = "description", length = 100, nullable = false)
+    @NotBlank(message = "Description is obrigatory")
     private String description;
 
     @Column(name = "price", precision = 20, scale = 2, nullable = false)
+    @NotBlank(message = "price is obrigatory")
     private BigDecimal price;
 
     @Column(name = "quantity")

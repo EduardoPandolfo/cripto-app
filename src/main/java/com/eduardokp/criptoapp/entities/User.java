@@ -4,6 +4,7 @@ package com.eduardokp.criptoapp.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Getter
@@ -20,6 +21,7 @@ public class User {
     private Long id;
 
     @Column(name = "name", length = 100, nullable = false)
+    @NotBlank(message = "User name is obrigatory")
     private String name;
 
     @Column(name = "enabled")
