@@ -2,9 +2,9 @@ package com.eduardokp.criptoapp.controllers;
 
 import com.eduardokp.criptoapp.dtos.UserDTO;
 import com.eduardokp.criptoapp.entities.User;
-import com.eduardokp.criptoapp.repositories.UserRepository;
 import com.eduardokp.criptoapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> post(@PathVariable Long id, @RequestBody User user) {
+    public ResponseEntity<?> put(@PathVariable Long id, @RequestBody User user) {
         try {
             Optional<UserDTO> optUser = service.findById(id);
             if (optUser.isPresent()) {
@@ -60,6 +60,8 @@ public class UserController {
         try {
             service.deleteById(id);
             return new ResponseEntity<>("User deleted", HttpStatus.OK);
+        }catch (EmptyResultDataAccessException e) {
+            return new ResponseEntity<>("User not found", HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }

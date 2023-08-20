@@ -22,8 +22,6 @@ public class SaleController {
         try {
             long id = service.save(saleDTO);
             return new ResponseEntity<>(new ResponseDTO<>(id, "Venda realizada com sucesso"), HttpStatus.CREATED);
-        } catch (ProductNoQuantityAvailableException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
             return new ResponseEntity<>("Error when creating sale", HttpStatus.INTERNAL_SERVER_ERROR);
         }
