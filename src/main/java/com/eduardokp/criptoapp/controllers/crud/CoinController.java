@@ -1,4 +1,4 @@
-package com.eduardokp.criptoapp.controllers;
+package com.eduardokp.criptoapp.controllers.crud;
 
 import com.eduardokp.criptoapp.dtos.CoinTransactionDTO;
 import com.eduardokp.criptoapp.entities.Coin;

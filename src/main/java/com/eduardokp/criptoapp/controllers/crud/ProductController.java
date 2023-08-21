@@ -1,4 +1,4 @@
-package com.eduardokp.criptoapp.controllers;
+package com.eduardokp.criptoapp.controllers.crud;
 
 import com.eduardokp.criptoapp.entities.Product;
 import com.eduardokp.criptoapp.repositories.ProductRepository;

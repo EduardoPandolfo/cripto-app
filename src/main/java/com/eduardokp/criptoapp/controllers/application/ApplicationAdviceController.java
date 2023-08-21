@@ -1,4 +1,4 @@
-package com.eduardokp.criptoapp.controllers;
+package com.eduardokp.criptoapp.controllers.application;
 
 import com.eduardokp.criptoapp.dtos.ResponseDTO;
 import com.eduardokp.criptoapp.exceptions.ProductNoQuantityAvailableException;

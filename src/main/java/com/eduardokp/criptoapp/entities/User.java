@@ -21,8 +21,16 @@ public class User {
     private Long id;
 
     @Column(name = "name", length = 100, nullable = false)
-    @NotBlank(message = "User name is obrigatory")
+    @NotBlank(message = "Name is obrigatory")
     private String name;
+
+    @Column(name = "username", length = 30, nullable = false, unique = true)
+    @NotBlank(message = "Username is obrigatory")
+    private String username;
+
+    @Column(name = "password", length = 60, nullable = false)
+    @NotBlank(message = "Password is obrigatory")
+    private String password;
 
     @Column(name = "enabled")
     private boolean enabled;
