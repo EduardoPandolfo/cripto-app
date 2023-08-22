@@ -32,7 +32,7 @@ public class User {
     @NotBlank(message = "Password is obrigatory")
     private String password;
 
-    @Column(name = "enabled")
+    @Column(name = "enabled", columnDefinition = "boolean default false")
     private boolean enabled;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)

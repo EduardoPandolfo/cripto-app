@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CriptoAppSecurityApplication {
+public class CriptoAppApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CriptoAppSecurityApplication.class, args);
+        SpringApplication.run(CriptoAppApplication.class, args);
     }
 
 }
