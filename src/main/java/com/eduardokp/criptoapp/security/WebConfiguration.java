@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @EnableWebMvc
 public class WebConfiguration implements WebMvcConfigurer {
-
+    //disable for tests vue js
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")

@@ -52,9 +52,10 @@ public class SecurityConfig {
                 .cors().and()
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/hello").permitAll()
+                    //.antMatchers("/*").permitAll() //texts vue js
                     .antMatchers(HttpMethod.POST,"/sign-up").permitAll()
                     .antMatchers(HttpMethod.POST,"/login").permitAll()
+                    .antMatchers("/coin/*").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
